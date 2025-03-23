@@ -1,9 +1,10 @@
-#echo $gapik
 query="$*"
-echo $query
+# could use jq but that would need to be installed
+
 question=$(printf %q "$query")
 
-curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$gapik" \
+curl
+"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=$GAPIK" \
 -H 'Content-Type: application/json' \
 -X POST \
 -d "{
@@ -12,5 +13,4 @@ curl "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:g
     }]
    }"
 
-echo "now do something useful. remember... you must load the geminiapikey into
-the gapik env variable before using this script."
+echo "Remember to set GAPIK (use decrypt_key.sh if you have it.)"
